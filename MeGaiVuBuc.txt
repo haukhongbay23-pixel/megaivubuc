@@ -1,0 +1,90 @@
+repeat task.wait() until game:IsLoaded()
+
+-- ANTI DUPLICATE GUI
+pcall(function()
+    game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("ChiiMenu"):Destroy()
+end)
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+-- LOAD UI LIB
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+
+local Window = Fluent:CreateWindow({
+    Title = "Chii Hauu Tổng Hợp",
+    SubTitle = "Blox Fruit",
+    TabWidth = 157,
+    Size = UDim2.fromOffset(440, 300),
+    Acrylic = false,
+    Theme = "White",
+    MinimizeKey = Enum.KeyCode.End
+})
+
+-- TABS
+local Tabs = {
+    Main0 = Window:AddTab({ Title="Thông Tin" }),
+    Main1 = Window:AddTab({ Title="Script Farm" }),
+    Main2 = Window:AddTab({ Title="Fix Lag" }),
+    Main3 = Window:AddTab({ Title="Farm Chest" }),
+    Main4 = Window:AddTab({ Title="Script Hop" }),
+    Main5 = Window:AddTab({ Title="Linh Tinh" }),
+}
+
+-- GUI BUTTON OPEN
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "ChiiMenu"
+ScreenGui.Parent = player:WaitForChild("PlayerGui")
+ScreenGui.ResetOnSpawn = false
+
+local ImageButton = Instance.new("ImageButton")
+ImageButton.Parent = ScreenGui
+ImageButton.Size = UDim2.new(0,40,0,40)
+ImageButton.Position = UDim2.new(0.1,0,0.16,0)
+ImageButton.BackgroundColor3 = Color3.fromRGB(0,0,0)
+ImageButton.BorderSizePixel = 0
+ImageButton.Image = "rbxassetid://85927475108236"
+
+local UICorner = Instance.new("UICorner")
+UICorner.CornerRadius = UDim.new(1,0)
+UICorner.Parent = ImageButton
+
+-- TOGGLE MENU
+ImageButton.MouseButton1Click:Connect(function()
+    Window:Toggle()
+end)
+
+--------------------------------------------------
+-- BUTTONS
+--------------------------------------------------
+
+Tabs.Main0:AddButton({
+    Title = "Discord",
+    Description = "Chii Hauu Community",
+    Callback = function()
+        setclipboard("https://discord.gg/5HSksFP6V")
+    end
+})
+
+Tabs.Main0:AddButton({
+    Title = "Youtuber",
+    Description = "Chii Hauu",
+    Callback = function()
+        setclipboard("https://www.youtube.com/@chiihauu")
+    end
+})
+
+Tabs.Main1:AddButton({
+    Title="Maru Hub",
+    Callback=function()
+getgenv().Key = "MARU-JRKAX-LU2V-07TH-KR52Q-FECF1"
+getgenv().id = "1251187246653247488"
+loadstring(game:HttpGet("https://raw.githubusercontent.com/xshiba/MaruBitkub/main/Mobile.lua"))()
+   end
+})
+Tabs.Main1:AddButton({
+    Title="GravityHub",
+    Callback=function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Dev-GravityHub/BloxFruit/refs/heads/main/Main.lua"))()
+       end
+})
